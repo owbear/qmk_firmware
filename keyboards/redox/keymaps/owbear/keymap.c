@@ -29,17 +29,17 @@ enum layers
 const            uint16_t  PROGMEM        keymaps[]         [ MATRIX_ROWS ]  [ MATRIX_COLS ]  =
 {
 [_US]             =         LAYOUT(
-LT(_NAV,KC_GRV),  KC_F1,    KC_F2,         KC_F3,            KC_F4,         KC_F5,     vvvvv      vvvvv     vvvvv   vvvvv     vvvvv              KC_F8,     KC_F9,         KC_F10,           KC_MINS,  KC_EQL,   TT(_NAV),
-KC_TAB,           KC_Q,     KC_W,          KC_E,             KC_R,          KC_T,      KC_F6,     vvvvv     vvvvv   vvvvv     KC_F7,             KC_Y,      KC_U,          KC_I,             KC_O,     KC_P,     KC_LBRC,
-KC_LGUI,          KC_A,     KC_S,          LALT_T(KC_D),     LCTL_T(KC_F),  KC_G,      KC_LBRC,   vvvvv     vvvvv   vvvvv     KC_RBRC,           KC_H,      RCTL_T(KC_J),  LALT_T(KC_K),     KC_L,     KC_SCLN,  RGUI_T(KC_QUOT),
-KC_LSFT,          KC_Z,     KC_X,          KC_C,             KC_V,          KC_B,      RaltHome,  KC_END,   vvvvv   KC_PGUP,  LT(_NAV,KC_PGDN),  KC_N,      KC_M,          KC_COMM,          KC_DOT,   KC_SLSH,  RSFT_T(KC_BSLS),
-LCTL_T(KC_ESC),   KC_LCTL,  KC_LEFT,       LALT_T(KC_RGHT),  vvvvv          TT(_SYM),  KC_BSPC,   KC_DEL,   vvvvv   KC_ENT,   KC_SPC,            MO(_SYM),  vvvvv          LALT_T(KC_DOWN),  KC_UP,    KC_RCTL,  RCTL_T(KC_ENT)
+LT(_NAV,KC_GRV),  KC_F1,    KC_F2,         KC_F3,            KC_F4,         KC_F5,     vvvvv      vvvvv     vvvvv   vvvvv     vvvvv              KC_F8,     KC_F9,         KC_F10,           KC_MINS,  KC_EQL,      TT(_NAV),
+KC_TAB,           KC_Q,     KC_W,          KC_E,             KC_R,          KC_T,      KC_F6,     vvvvv     vvvvv   vvvvv     KC_F7,             KC_Y,      KC_U,          KC_I,             KC_O,     KC_P,        KC_LBRC,
+KC_LGUI,          KC_A,     KC_S,          LALT_T(KC_D),     LCTL_T(KC_F),  KC_G,      KC_LBRC,   vvvvv     vvvvv   vvvvv     KC_RBRC,           KC_H,      RCTL_T(KC_J),  LALT_T(KC_K),     KC_L,     KC_SCLN,     RGUI_T(KC_QUOT),
+KC_LSFT,          KC_Z,     KC_X,          KC_C,             KC_V,          KC_B,      RaltHome,  KC_END,   vvvvv   KC_PGUP,  LT(_NAV,KC_PGDN),  KC_N,      KC_M,          KC_COMM,          KC_DOT,   KC_SLSH,     RSFT_T(KC_BSLS),
+LCTL_T(KC_ESC),   KC_LCTL,  KC_LEFT,       LALT_T(KC_RGHT),  vvvvv          TT(_SYM),  KC_BSPC,   KC_DEL,   vvvvv   KC_ENT,   KC_SPC,            MO(_SYM),  vvvvv          LALT_T(KC_DOWN),  KC_UP,    KC_RCTL,     RCTL_T(KC_ENT)
 )
 ,
 [_SE]             =         LAYOUT(
 _______,          _______,  _______,       _______,          _______,       _______,   vvvvv      vvvvv     vvvvv   vvvvv     vvvvv              _______,   _______,       _______,          _______,  _______,     _______,
 _______,          _______,  _______,       _______,          _______,       _______,   _______,   vvvvv     vvvvv   vvvvv     _______,           _______,   _______,       _______,          _______,  _______,     RALT(KC_W),
-_______,          _______,  _______,       _______,          _______,       _______,   _______,   vvvvv     vvvvv   vvvvv     _______,           _______,   _______,       _______,          _______,  RALT(KC_P),  RALT(KC_Q), // Would like RGUI_T(RALT(KC_Q))
+_______,          _______,  _______,       _______,          _______,       _______,   _______,   vvvvv     vvvvv   vvvvv     _______,           _______,   _______,       _______,          _______,  RALT(KC_P),  RALT(KC_Q),       //        Would   like    RGUI_T(RALT(KC_Q))
 _______,          _______,  _______,       _______,          _______,       _______,   _______,   _______,  vvvvv   _______,  _______,           _______,   _______,       _______,          _______,  _______,     _______,
 _______,          _______,  _______,       _______,          vvvvv          _______,   _______,   _______,  vvvvv   _______,  _______,           _______,   vvvvv          _______,          _______,  _______,     _______
 )
@@ -61,7 +61,7 @@ KC_NO,            KC_NO,    KC_NO,         KC_NO,            vvvvv          KC_B
 )
 ,
 [_SYS]            =         LAYOUT(
-KC_NO,            KC_NO,    KC_NO,         KC_NO,            KC_NO,         KC_NO,     KC_NO,     KC_NO,    KC_NO,  KC_NO,    KC_NO,             KC_NO,     KC_NO,         RESET,            RGB_M_P,  RGB_TOG,     RGB_MOD,             RGB_HUD,  KC_NO,  KC_NO,  RGB_SAI,  RGB_VAD,  RGB_VAI,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_TRNS,  KC_NO,  KC_NO,  KC_TRNS,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO
+KC_NO,            KC_NO,    KC_NO,         KC_NO,            KC_NO,         KC_NO,     KC_NO,     KC_NO,    KC_NO,  KC_NO,    KC_NO,             KC_NO,     KC_NO,         RESET,            RGB_M_P,  RGB_TOG,     RGB_MOD,          RGB_HUD,  KC_NO,  KC_NO,  RGB_SAI,            RGB_VAD,  RGB_VAI,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_TRNS,  KC_NO,  KC_NO,  KC_TRNS,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO
 )
 };
 /*END*/
