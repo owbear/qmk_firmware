@@ -6,3 +6,9 @@
 #define TAPPING_TOGGLE 3
 
 #define RGBLIGHT_ANIMATIONS
+// Enable Light Layers implementation
+#define RGBLIGHT_LAYERS /* doesn work for me */
+// Allow Light Layers to override RGB off configuration
+#define RGBLIGHT_LAYERS_OVERRIDE_RGB_OFF /* doesn work for me */
+
+//#define USE_SERIAL // not enabled by default

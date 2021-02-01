@@ -24,6 +24,12 @@ enum layers
 #define vvvvv
 #define RaltHome RALT_T(KC_HOME)
 
+// Plans/ideas:
+// - Remove LALT_T arrow as pressing and holding arrows to scroll seems natural and I never use those Alt
+// - Add åäö on ['; on _SYM layer as AltGr on home is a bit difficult to reach
+// -- Collorary, make [': available on _SE layer?
+// - Hold XCV for cut,copy and paste?
+//
 // Formatted using :?\[_US\]?,/\<END\>/!column -t
 
 const            uint16_t  PROGMEM        keymaps[]         [ MATRIX_ROWS ]  [ MATRIX_COLS ]  =
