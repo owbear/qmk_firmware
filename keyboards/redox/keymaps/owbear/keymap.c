@@ -16,12 +16,13 @@ enum layers
     _US,  // Default ASCII
     _SE,  // ASCII with SE
     _SYM, // Symbols
+    _SYM_SE, // Symbols except for SE keys
     _NAV, // Navigational
     _SYS  // Random stuff
 };
 
 #define _______ KC_TRNS
-#define vvvvv
+#define vvvvv /* spacer for non-existant keys */
 #define RaltHome RALT_T(KC_HOME)
 
 // Plans/ideas:
@@ -38,39 +39,47 @@ enum layers
 const            uint16_t  PROGMEM        keymaps[]         [ MATRIX_ROWS ]  [ MATRIX_COLS ]  =
 {
 [_US]             =         LAYOUT(
-LT(_NAV,KC_GRV),  KC_F1,    KC_F2,         KC_F3,         KC_F4,         KC_F5,     vvvvv      vvvvv     vvvvv   vvvvv     vvvvv              KC_F8,     KC_F9,         KC_F10,        KC_MINS,  KC_EQL,      TT(_NAV),
-KC_TAB,           KC_Q,     KC_W,          KC_E,          KC_R,          KC_T,      KC_F6,     vvvvv     vvvvv   vvvvv     KC_F7,             KC_Y,      KC_U,          KC_I,          KC_O,     KC_P,        KC_LBRC,
-KC_LGUI,          KC_A,     KC_S,          LALT_T(KC_D),  LCTL_T(KC_F),  KC_G,      KC_LBRC,   vvvvv     vvvvv   vvvvv     KC_RBRC,           KC_H,      RCTL_T(KC_J),  LALT_T(KC_K),  KC_L,     KC_SCLN,     RGUI_T(KC_QUOT),
-KC_LSFT,          KC_Z,     KC_X,          KC_C,          KC_V,          KC_B,      RaltHome,  KC_END,   vvvvv   KC_PGUP,  LT(_NAV,KC_PGDN),  KC_N,      KC_M,          KC_COMM,       KC_DOT,   KC_SLSH,     RSFT_T(KC_BSLS),
-LCTL_T(KC_ESC),   KC_LCTL,  KC_LEFT,       KC_RGHT,       vvvvv          TT(_SYM),  KC_BSPC,   KC_DEL,   vvvvv   KC_ENT,   KC_SPC,            MO(_SYM),  vvvvv          KC_DOWN,       KC_UP,    KC_RCTL,     RCTL_T(KC_ENT)
+LT(_NAV,KC_GRV),  KC_F1,    KC_F2,         KC_F3,         KC_F4,         KC_F5,        vvvvv      vvvvv     vvvvv   vvvvv     vvvvv              KC_F8,        KC_F9,         KC_F10,        KC_MINS,  KC_EQL,      TT(_NAV),
+KC_TAB,           KC_Q,     KC_W,          KC_E,          KC_R,          KC_T,         KC_F6,     vvvvv     vvvvv   vvvvv     KC_F7,             KC_Y,         KC_U,          KC_I,          KC_O,     KC_P,        KC_LBRC,
+KC_LGUI,          KC_A,     KC_S,          LALT_T(KC_D),  LCTL_T(KC_F),  KC_G,         KC_LBRC,   vvvvv     vvvvv   vvvvv     KC_RBRC,           KC_H,         RCTL_T(KC_J),  LALT_T(KC_K),  KC_L,     KC_SCLN,     RGUI_T(KC_QUOT),
+KC_LSFT,          KC_Z,     KC_X,          KC_C,          KC_V,          KC_B,         RaltHome,  KC_END,   vvvvv   KC_PGUP,  LT(_NAV,KC_PGDN),  KC_N,         KC_M,          KC_COMM,       KC_DOT,   KC_SLSH,     RSFT_T(KC_BSLS),
+LCTL_T(KC_ESC),   KC_LCTL,  KC_LEFT,       KC_RGHT,       vvvvv          TT(_SYM),     KC_BSPC,   KC_DEL,   vvvvv   KC_ENT,   KC_SPC,            MO(_SYM),     vvvvv          KC_DOWN,       KC_UP,    KC_RCTL,     RCTL_T(KC_ENT)
 )
 ,
 [_SE]             =         LAYOUT(
-_______,          _______,  _______,       _______,       _______,       _______,   vvvvv      vvvvv     vvvvv   vvvvv     vvvvv              _______,   _______,       _______,       _______,  _______,     _______,
-_______,          _______,  _______,       _______,       _______,       _______,   _______,   vvvvv     vvvvv   vvvvv     _______,           _______,   _______,       _______,       _______,  _______,     RALT(KC_W),
-_______,          _______,  _______,       _______,       _______,       _______,   _______,   vvvvv     vvvvv   vvvvv     _______,           _______,   _______,       _______,       _______,  RALT(KC_P),  RALT(KC_Q),       //        Would   like    RGUI_T(RALT(KC_Q))
-_______,          _______,  _______,       _______,       _______,       _______,   _______,   _______,  vvvvv   _______,  _______,           _______,   _______,       _______,       _______,  _______,     _______,
-_______,          _______,  _______,       _______,       vvvvv          _______,   _______,   _______,  vvvvv   _______,  _______,           _______,   vvvvv          _______,       _______,  _______,     _______
+_______,          _______,  _______,       _______,       _______,       _______,      vvvvv      vvvvv     vvvvv   vvvvv     vvvvv              _______,      _______,       _______,       _______,  _______,     _______,
+_______,          _______,  _______,       _______,       _______,       _______,      _______,   vvvvv     vvvvv   vvvvv     _______,           _______,      _______,       _______,       _______,  _______,     RALT(KC_W),
+_______,          _______,  _______,       _______,       _______,       _______,      _______,   vvvvv     vvvvv   vvvvv     _______,           _______,      _______,       _______,       _______,  RALT(KC_P),  RALT(KC_Q),       //Want__RGUI_T(RALT(KC_Q))
+_______,          _______,  _______,       _______,       _______,       _______,      _______,   _______,  vvvvv   _______,  _______,           _______,      _______,       _______,       _______,  _______,     _______,
+_______,          _______,  _______,       _______,       vvvvv          MO(_SYM_SE),  _______,   _______,  vvvvv   _______,  _______,           MO(_SYM_SE),  vvvvv          _______,       _______,  _______,     _______
 )
 ,
 [_SYM]            =         LAYOUT(
-MO(_SYS),         _______,  _______,       _______,       _______,       _______,   vvvvv      vvvvv     vvvvv   vvvvv     vvvvv              _______,   _______,       _______,       KC_F11,   KC_F12,      MO(_SYS),
-_______,          KC_EXLM,  KC_AT,         KC_LBRC,       KC_RBRC,       KC_PIPE,   _______,   vvvvv     vvvvv   vvvvv     _______,           KC_PSLS,   KC_7,          KC_8,          KC_9,     KC_PAST,     RALT(KC_W),
-_______,          KC_HASH,  KC_DLR,        KC_LPRN,       KC_RPRN,       KC_AMPR,   _______,   vvvvv     vvvvv   vvvvv     _______,           KC_PMNS,   KC_4,          KC_5,          KC_6,     RALT(KC_P),  RALT(KC_Q),
-_______,          KC_PERC,  KC_CIRC,       KC_LCBR,       KC_RCBR,       KC_TILD,   TG(_SE),   _______,  vvvvv   _______,  _______,           KC_PPLS,   KC_1,          KC_2,          KC_3,     KC_PENT,     KC_NO,
-_______,          _______,  _______,       _______,       vvvvv          _______,   _______,   _______,  vvvvv   _______,  _______,           KC_0,      vvvvv          _______,       KC_PDOT,  KC_PENT,     KC_APP
+MO(_SYS),         _______,  _______,       _______,       _______,       _______,      vvvvv      vvvvv     vvvvv   vvvvv     vvvvv              _______,      _______,       _______,       KC_F11,   KC_F12,      MO(_SYS),
+_______,          KC_EXLM,  KC_AT,         KC_LBRC,       KC_RBRC,       KC_PIPE,      _______,   vvvvv     vvvvv   vvvvv     _______,           KC_PSLS,      KC_7,          KC_8,          KC_9,     KC_PAST,     RALT(KC_W),
+_______,          KC_HASH,  KC_DLR,        KC_LPRN,       KC_RPRN,       KC_AMPR,      _______,   vvvvv     vvvvv   vvvvv     _______,           KC_PMNS,      KC_4,          KC_5,          KC_6,     RALT(KC_P),  RALT(KC_Q),
+_______,          KC_PERC,  KC_CIRC,       KC_LCBR,       KC_RCBR,       KC_TILD,      TG(_SE),   _______,  vvvvv   _______,  _______,           KC_PPLS,      KC_1,          KC_2,          KC_3,     KC_PENT,     KC_NO,
+_______,          _______,  _______,       _______,       vvvvv          _______,      _______,   _______,  vvvvv   _______,  _______,           KC_0,         vvvvv          _______,       KC_PDOT,  KC_PENT,     KC_APP
+)
+,
+[_SYM_SE]         =         LAYOUT(
+_______,          _______,  _______,       _______,       _______,       _______,      vvvvv      vvvvv     vvvvv   vvvvv     vvvvv              _______,      _______,       _______,       _______,  _______,     _______,
+_______,          _______,  _______,       _______,       _______,       _______,      _______,   vvvvv     vvvvv   vvvvv     _______,           _______,      _______,       _______,       _______,  _______,     KC_LBRC,
+_______,          _______,  _______,       _______,       _______,       _______,      _______,   vvvvv     vvvvv   vvvvv     _______,           _______,      _______,       _______,       _______,  KC_SCLN,     RGUI_T(KC_QUOT),
+_______,          _______,  _______,       _______,       _______,       _______,      _______,   _______,  vvvvv   _______,  _______,           _______,      _______,       _______,       _______,  _______,     _______,
+_______,          _______,  _______,       _______,       vvvvv          _______,      _______,   _______,  vvvvv   _______,  _______,           _______,      vvvvv          _______,       _______,  _______,     _______
 )
 ,
 [_NAV]            =         LAYOUT(
-_______,          _______,  _______,       _______,       _______,       _______,   vvvvv      vvvvv     vvvvv   vvvvv     vvvvv              _______,   _______,       _______,       _______,  _______,     _______,
-KC_NO,            RESET,    KC_MS_U,       KC_NO,         KC_WH_U,       KC_NO,     _______,   vvvvv     vvvvv   vvvvv     _______,           KC_NO,     KC_NO,         KC_NO,         KC_NO,    KC_NO,       KC_NO,
-KC_NO,            KC_MS_L,  KC_MS_D,       KC_MS_R,       KC_WH_D,       KC_NO,     _______,   vvvvv     vvvvv   vvvvv     _______,           KC_LEFT,   KC_DOWN,       KC_UP,         KC_RGHT,  KC_NO,       KC_NO,
-KC_NO,            KC_NO,    LSFT(KC_DEL),  LCTL(KC_INS),  LSFT(KC_INS),  KC_NO,     _______,   _______,  vvvvv   _______,  KC_NO,             KC_NO,     KC_NO,         KC_NO,         KC_NO,    KC_NO,       KC_NO,
-KC_NO,            KC_NO,    KC_NO,         KC_NO,         vvvvv          KC_BTN1,   KC_BTN2,   _______,  vvvvv   _______,  _______,           KC_NO,     vvvvv          KC_NO,         KC_NO,    KC_NO,       KC_NO
+_______,          _______,  _______,       _______,       _______,       _______,      vvvvv      vvvvv     vvvvv   vvvvv     vvvvv              _______,      _______,       _______,       _______,  _______,     _______,
+KC_NO,            RESET,    KC_MS_U,       KC_NO,         KC_WH_U,       KC_NO,        _______,   vvvvv     vvvvv   vvvvv     _______,           KC_NO,        KC_NO,         KC_NO,         KC_NO,    KC_NO,       KC_NO,
+KC_NO,            KC_MS_L,  KC_MS_D,       KC_MS_R,       KC_WH_D,       KC_NO,        _______,   vvvvv     vvvvv   vvvvv     _______,           KC_LEFT,      KC_DOWN,       KC_UP,         KC_RGHT,  KC_NO,       KC_NO,
+KC_NO,            KC_NO,    LSFT(KC_DEL),  LCTL(KC_INS),  LSFT(KC_INS),  KC_NO,        _______,   _______,  vvvvv   _______,  KC_NO,             KC_NO,        KC_NO,         KC_NO,         KC_NO,    KC_NO,       KC_NO,
+KC_NO,            KC_NO,    KC_NO,         KC_NO,         vvvvv          KC_BTN1,      KC_BTN2,   _______,  vvvvv   _______,  _______,           KC_NO,        vvvvv          KC_NO,         KC_NO,    KC_NO,       KC_NO
 )
 ,
 [_SYS]            =         LAYOUT(
-KC_NO,            KC_NO,    KC_NO,         KC_NO,         KC_NO,         KC_NO,     KC_NO,     KC_NO,    KC_NO,  KC_NO,    KC_NO,             KC_NO,     KC_NO,         RESET,         RGB_M_P,  RGB_TOG,     RGB_MOD,          RGB_HUD,  KC_NO,  KC_NO,  RGB_SAI,            RGB_VAD,  RGB_VAI,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_TRNS,  KC_NO,  KC_NO,  KC_TRNS,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO
+KC_NO,            KC_NO,    KC_NO,         KC_NO,         KC_NO,         KC_NO,        KC_NO,     KC_NO,    KC_NO,  KC_NO,    KC_NO,             KC_NO,        KC_NO,         RESET,         RGB_M_P,  RGB_TOG,     RGB_MOD,          RGB_HUD,  KC_NO,  KC_NO,  RGB_SAI,            RGB_VAD,  RGB_VAI,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_TRNS,  KC_NO,  KC_NO,  KC_TRNS,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO
 )
 };
 /*END*/
