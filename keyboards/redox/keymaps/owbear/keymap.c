@@ -28,6 +28,9 @@ enum layers
 // - Remove LALT_T arrow as pressing and holding arrows to scroll seems natural and I never use those Alt
 // - Add åäö on ['; on _SYM layer as AltGr on home is a bit difficult to reach
 // -- Collorary, make [': available on _SE layer?
+// - _SYM[KC_LSFT] for caps lock
+// -- Or go with KC_LOCK?
+// -- This means I shoud stop producing '%' with shift+mod+K and problably move % to a better place
 // - Hold XCV for cut,copy and paste?
 //
 // Formatted using :?\[_US\]?,/\<END\>/!column -t
@@ -57,7 +60,7 @@ _______,          _______,  _______,       _______,       vvvvv          _______
 MO(_SYS),         _______,  _______,       _______,       _______,       _______,   vvvvv      vvvvv     vvvvv   vvvvv     vvvvv              _______,   _______,       _______,       KC_F11,   KC_F12,      MO(_SYS),
 _______,          KC_EXLM,  KC_AT,         KC_LBRC,       KC_RBRC,       KC_PIPE,   _______,   vvvvv     vvvvv   vvvvv     _______,           KC_PSLS,   KC_7,          KC_8,          KC_9,     KC_PAST,     RALT(KC_W),
 _______,          KC_HASH,  KC_DLR,        KC_LPRN,       KC_RPRN,       KC_AMPR,   _______,   vvvvv     vvvvv   vvvvv     _______,           KC_PMNS,   KC_4,          KC_5,          KC_6,     RALT(KC_P),  RALT(KC_Q),
-_______,          KC_PERC,  KC_CIRC,       KC_LCBR,       KC_RCBR,       KC_TILD,   TG(_SE),   _______,  vvvvv   _______,  _______,           KC_PPLS,   KC_1,          KC_2,          KC_3,     KC_PENT,     KC_NO,
+KC_CAPS,          KC_PERC,  KC_CIRC,       KC_LCBR,       KC_RCBR,       KC_TILD,   TG(_SE),   _______,  vvvvv   _______,  _______,           KC_PPLS,   KC_1,          KC_2,          KC_3,     KC_PENT,     KC_RSFT,
 _______,          _______,  _______,       _______,       vvvvv          _______,   _______,   _______,  vvvvv   _______,  _______,           KC_0,      vvvvv          _______,       KC_PDOT,  KC_PENT,     KC_APP
 )
 ,
