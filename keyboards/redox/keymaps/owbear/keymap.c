@@ -1,3 +1,4 @@
+// vi: colorcolumn=0
 #include QMK_KEYBOARD_H
 #include QMK_KEYMAP_CONFIG_H
 
@@ -31,8 +32,8 @@ enum layers
 // - _SYM[KC_LGUI] for caps lock
 // ** Or go with KC_LOCK?
 // * Move '%' % to a better place like _SYM[T] or _SYM[B]?
-// * Add backslash on KC_LSFT too?
-// * Make KC_ESC more accessible
+// - Add backslash on KC_LSFT too? - Nope: intellij uses double tapped shift
+// - Make KC_ESC more accessible - yep! Put it on key above KC_TAB
 //
 // - Hold XCV for cut,copy and paste?
 //
