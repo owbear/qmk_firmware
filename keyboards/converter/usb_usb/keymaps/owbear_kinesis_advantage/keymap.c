@@ -145,12 +145,12 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
   switch(combo_index) {
     case ZC_COPY:
       if (pressed) {
-        tap_code16(LCTL(KC_C));
+        tap_code16(LCTL(KC_INS));
       }
       break;
     case XV_PASTE:
       if (pressed) {
-        tap_code16(LCTL(KC_V));
+        tap_code16(LSFT(KC_INS));
       }
       break;
   }
