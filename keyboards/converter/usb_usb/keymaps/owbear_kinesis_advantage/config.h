@@ -6,3 +6,5 @@
 /* #define PERMISSIVE_HOLD */
 #define IGNORE_MOD_TAP_INTERRUPT
 #define TAPPING_TOGGLE 3
+
+#define COMBO_COUNT 2

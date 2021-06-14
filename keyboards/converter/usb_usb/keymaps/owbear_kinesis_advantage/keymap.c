@@ -2,7 +2,7 @@
 #include QMK_KEYBOARD_H
 #include QMK_KEYMAP_CONFIG_H
 
-#include "process_tap_hold.h"
+/// #include "process_tap_hold.h"
 
 enum layers
 {
@@ -71,54 +71,93 @@ enum layers
     ),
 */
 
-enum keycodes {
-  SOME_KEYCODE = SAFE_RANGE,
-  // All your custom keycodes here like normal
-  _QK_TAP_HOLD // Has to be the last element
-};
-
-// Place this below the custom keycodes
-uint16_t QK_TAP_HOLD = _QK_TAP_HOLD;
-#define TH(n) (_QK_TAP_HOLD + n)
-
+////////////////////////
 // Tap Hold Declarations
- enum {
-   TH_X_CUT = 0,
-   TH_C_COPY = 1,
-   TH_V_PASTE = 2,
- };
 
-// This is where you place you tap-hold actions
-// You can use the macros:
-// ACTION_TAP_HOLD_SHIFT(KC_TAP, KC_HOLD, KC_TAP_SHIFT, KC_HOLD_SHIFT)
-// and ACTION_TAP_HOLD(KC_TAP, KC_HOLD)
-tap_hold_action_t tap_hold_actions[] = {
-    [TH_X_CUT]   = ACTION_TAP_HOLD(KC_X, LSFT(KC_DEL)),
-    [TH_C_COPY]  = ACTION_TAP_HOLD(KC_C, LCTL(KC_INS)),
-    [TH_V_PASTE] = ACTION_TAP_HOLD(KC_V, LSFT(KC_INS)),
-};
+/// enum keycodes {
+///   SOME_KEYCODE = SAFE_RANGE,
+///   // All your custom keycodes here like normal
+///   _QK_TAP_HOLD // Has to be the last element
+/// };
+/// 
+/// // Place this below the custom keycodes
+/// uint16_t QK_TAP_HOLD = _QK_TAP_HOLD;
+/// #define TH(n) (_QK_TAP_HOLD + n)
+/// 
+/// // Tap Hold Declarations
+///  enum {
+///    TH_X_CUT = 0,
+///    TH_C_COPY = 1,
+///    TH_V_PASTE = 2,
+///  };
+/// 
+/// // This is where you place you tap-hold actions
+/// // You can use the macros:
+/// // ACTION_TAP_HOLD_SHIFT(KC_TAP, KC_HOLD, KC_TAP_SHIFT, KC_HOLD_SHIFT)
+/// // and ACTION_TAP_HOLD(KC_TAP, KC_HOLD)
+/// tap_hold_action_t tap_hold_actions[] = {
+///     [TH_X_CUT]   = ACTION_TAP_HOLD(KC_X, LSFT(KC_DEL)),
+///     [TH_C_COPY]  = ACTION_TAP_HOLD(KC_C, LCTL(KC_INS)),
+///     [TH_V_PASTE] = ACTION_TAP_HOLD(KC_V, LSFT(KC_INS)),
+/// };
+/// 
+/// void matrix_scan_user(void) {
+///   matrix_scan_tap_hold(); // Place this function call here
+/// }
+/// 
+/// bool process_record_user(uint16_t keycode, keyrecord_t *record) { 
+///   process_record_tap_hold(keycode, record); // Place this function call here
+///   return true; 
+/// }
 
-void matrix_scan_user(void) {
-  matrix_scan_tap_hold(); // Place this function call here
-}
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) { 
-  process_record_tap_hold(keycode, record); // Place this function call here
-  return true; 
-}
-
+/////////////////////////
 // Tap Dance Declarations
- enum {
-   TD_X_CUT = 0,
-   TD_C_COPY = 1,
-   TD_V_PASTE = 2,
- };
-
+/// enum {
+///   TD_X_CUT = 0,
+///   TD_C_COPY = 1,
+///   TD_V_PASTE = 2,
+/// };
+///
 qk_tap_dance_action_t tap_dance_actions[] = {
-    [TD_X_CUT]   = ACTION_TAP_DANCE_DOUBLE(KC_X, LSFT(KC_DEL)),
-    [TD_C_COPY]  = ACTION_TAP_DANCE_DOUBLE(KC_C, LCTL(KC_INS)),
-    [TD_V_PASTE] = ACTION_TAP_DANCE_DOUBLE(KC_V, LSFT(KC_INS)),
+///    [TD_X_CUT]   = ACTION_TAP_DANCE_DOUBLE(KC_X, LSFT(KC_DEL)),
+///    [TD_C_COPY]  = ACTION_TAP_DANCE_DOUBLE(KC_C, LCTL(KC_INS)),
+///    [TD_V_PASTE] = ACTION_TAP_DANCE_DOUBLE(KC_V, LSFT(KC_INS)),
 };
+
+/////////
+// Combos
+
+enum combo_events {
+  ZC_COPY,
+  XV_PASTE
+};
+
+const uint16_t PROGMEM copy_combo[] = {KC_Z, KC_C, COMBO_END};
+const uint16_t PROGMEM paste_combo[] = {KC_X, KC_V, COMBO_END};
+
+// Update COMBO_COUNT in config.h to match
+combo_t key_combos[COMBO_COUNT] = {
+  [ZC_COPY] = COMBO_ACTION(copy_combo),
+  [XV_PASTE] = COMBO_ACTION(paste_combo),
+};
+
+void process_combo_event(uint16_t combo_index, bool pressed) {
+  switch(combo_index) {
+    case ZC_COPY:
+      if (pressed) {
+        tap_code16(LCTL(KC_C));
+      }
+      break;
+    case XV_PASTE:
+      if (pressed) {
+        tap_code16(LCTL(KC_V));
+      }
+      break;
+  }
+}
+
+/////////
+// Layout
 
 // Build: make converter/usb_usb:owbear_kinesis_advantage && cp .build/converter_usb_usb_hasu_owbear_kinesis_advantage.hex /mnt/tmp/qmk/
 // Burn: timeout 3 && \bin\qmk_flash.bat converter_usb_usb_hasu_owbear_kinesis_advantage.hex
@@ -129,7 +168,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_GRV,  KC_F1,   KC_F2,   KC_F3,        KC_F4,          KC_F5,  KC_F6,  KC_F7,        KC_F8,         KC_F9,   KC_F10,   KC_NO,           KC_ESC,    KC_BSPC,       KC_INS,  RaltHome, KC_PGUP,    KC_NLCK, KC_PSLS, KC_PAST, KC_PMNS,
     KC_TAB,  KC_Q,    KC_W,    KC_E,         KC_R,           KC_T,   KC_Y,   KC_U,         KC_I,          KC_O,    KC_P,     KC_LBRC,         KC_RBRC,   KC_NO,         KC_DEL,  KC_END,  KC_PGDN,     KC_P7,   KC_P8,   KC_P9,
     KC_LGUI, KC_A, LSFT_T(KC_S), LALT_T(KC_D), LCTL_T(KC_F),   KC_G,   KC_H,   RCTL_T(KC_J), LALT_T(KC_K), RSFT_T(KC_L), RGUI_T(KC_SCLN),  KC_QUOT, KC_ENT,                                            KC_P4,   KC_P5,   KC_P6,   KC_PPLS,
-    KC_LSFT, KC_Z,  TH(TH_X_CUT), TH(TH_C_COPY), TH(TH_V_PASTE), KC_B, KC_N,   KC_M,         KC_COMM,       KC_DOT,  KC_SLSH,  RSFT_T(KC_BSLS),                                   KC_DOWN,             KC_P1,   KC_P2,   KC_P3,
+    KC_LSFT, KC_Z,    KC_X,    KC_C,         KC_V,           KC_B,   KC_N,   KC_M,         KC_COMM,       KC_DOT,  KC_SLSH,  RSFT_T(KC_BSLS),                                   KC_DOWN,             KC_P1,   KC_P2,   KC_P3,
     TT(_SYM), KC_LGUI, KC_LALT,                      KC_SPC,                                               KC_RALT, KC_RGUI, KC_APP,          TT(_SYM),                KC_LEFT, KC_UP, KC_RGHT,        KC_P0,   KC_PDOT, KC_PENT
     ),
 
