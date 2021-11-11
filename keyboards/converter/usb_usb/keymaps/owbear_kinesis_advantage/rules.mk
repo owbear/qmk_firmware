@@ -22,3 +22,8 @@ TAP_DANCE_ENABLE = yes # Used to allow multiple taps of a key to perform differe
 MOUSEKEY_ENABLE = yes
 
 LTO_ENABLE = yes # Reduces the compiled firmware size
+
+# Enabled these to get AG_SWAP working. Not sure it's necessary though
+# BOOTMAGIC_ENABLE = lite
+# COMMAND_ENABLE = yes
+# BOOTLOADER = atmel-dfu

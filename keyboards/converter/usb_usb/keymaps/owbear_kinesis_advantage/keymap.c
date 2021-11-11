@@ -163,6 +163,8 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 
 // Build: make converter/usb_usb:owbear_kinesis_advantage && cp .build/converter_usb_usb_hasu_owbear_kinesis_advantage.hex /mnt/tmp/qmk/
 // Burn: timeout 3 && \bin\qmk_flash.bat converter_usb_usb_hasu_owbear_kinesis_advantage.hex
+//
+// When, if, ALT and GUI gets swapped it's nice to have AG_NORM somewhere
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_US] = LAYOUT_ansi(

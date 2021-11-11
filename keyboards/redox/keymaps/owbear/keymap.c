@@ -34,6 +34,7 @@ enum layers
 // * Move '%' % to a better place like _SYM[T] or _SYM[B]?
 // - Add backslash on KC_LSFT too? - Nope: intellij uses double tapped shift
 // - Make KC_ESC more accessible - yep! Put it on key above KC_TAB
+// * When, if, ALT and GUI gets swapped it's nice to have AG_NORM somewhere
 //
 // - Hold XCV for cut,copy and paste?
 //
