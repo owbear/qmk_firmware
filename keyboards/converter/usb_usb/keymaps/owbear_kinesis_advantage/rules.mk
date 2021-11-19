@@ -17,7 +17,7 @@ COMMAND_ENABLE = no # Not being used, and can cause conflicts with space cadet s
 SPACE_CADET_ENABLE = no # Not using special built in space cadet keys, using custom tap dance instead
 EXTRAKEY_ENABLE = yes # Used for audio control and system control keys
 COMBO_ENABLE = yes # Used to allow chording of keys to trigger an action
-TAP_DANCE_ENABLE = yes # Used to allow multiple taps of a key to perform different actions
+TAP_DANCE_ENABLE = no # Used to allow multiple taps of a key to perform different actions
 
 MOUSEKEY_ENABLE = yes
 

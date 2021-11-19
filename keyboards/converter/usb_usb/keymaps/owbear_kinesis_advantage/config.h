@@ -7,4 +7,5 @@
 #define IGNORE_MOD_TAP_INTERRUPT
 #define TAPPING_TOGGLE 3
 
-#define COMBO_COUNT 2
+#define COMBO_COUNT 3
+#define COMBO_TERM 40

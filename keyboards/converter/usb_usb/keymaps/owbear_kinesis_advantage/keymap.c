@@ -70,88 +70,60 @@ enum layers
     ),
 */
 
-////////////////////////
-// Tap Hold Declarations
-
-/// enum keycodes {
-///   SOME_KEYCODE = SAFE_RANGE,
-///   // All your custom keycodes here like normal
-///   _QK_TAP_HOLD // Has to be the last element
-/// };
-/// 
-/// // Place this below the custom keycodes
-/// uint16_t QK_TAP_HOLD = _QK_TAP_HOLD;
-/// #define TH(n) (_QK_TAP_HOLD + n)
-/// 
-/// // Tap Hold Declarations
-///  enum {
-///    TH_X_CUT = 0,
-///    TH_C_COPY = 1,
-///    TH_V_PASTE = 2,
-///  };
-/// 
-/// // This is where you place you tap-hold actions
-/// // You can use the macros:
-/// // ACTION_TAP_HOLD_SHIFT(KC_TAP, KC_HOLD, KC_TAP_SHIFT, KC_HOLD_SHIFT)
-/// // and ACTION_TAP_HOLD(KC_TAP, KC_HOLD)
-/// tap_hold_action_t tap_hold_actions[] = {
-///     [TH_X_CUT]   = ACTION_TAP_HOLD(KC_X, LSFT(KC_DEL)),
-///     [TH_C_COPY]  = ACTION_TAP_HOLD(KC_C, LCTL(KC_INS)),
-///     [TH_V_PASTE] = ACTION_TAP_HOLD(KC_V, LSFT(KC_INS)),
-/// };
-/// 
-/// void matrix_scan_user(void) {
-///   matrix_scan_tap_hold(); // Place this function call here
-/// }
-/// 
-/// bool process_record_user(uint16_t keycode, keyrecord_t *record) { 
-///   process_record_tap_hold(keycode, record); // Place this function call here
-///   return true; 
-/// }
-
-/////////////////////////
-// Tap Dance Declarations
-/// enum {
-///   TD_X_CUT = 0,
-///   TD_C_COPY = 1,
-///   TD_V_PASTE = 2,
-/// };
-///
-qk_tap_dance_action_t tap_dance_actions[] = {
-///    [TD_X_CUT]   = ACTION_TAP_DANCE_DOUBLE(KC_X, LSFT(KC_DEL)),
-///    [TD_C_COPY]  = ACTION_TAP_DANCE_DOUBLE(KC_C, LCTL(KC_INS)),
-///    [TD_V_PASTE] = ACTION_TAP_DANCE_DOUBLE(KC_V, LSFT(KC_INS)),
-};
-
 /////////
 // Combos
 
 enum combo_events {
-  ZC_COPY,
-  XV_PASTE
+  ZX_CUT,
+  XC_COPY,
+  CV_PASTE,
+  JC_CTRL_C,
+  JC_CTRL_R
 };
 
-const uint16_t PROGMEM copy_combo[] = {KC_Z, KC_C, COMBO_END};
-const uint16_t PROGMEM paste_combo[] = {KC_X, KC_V, COMBO_END};
+const uint16_t PROGMEM combo_cut[] = {KC_Z, KC_X, COMBO_END};
+const uint16_t PROGMEM combo_copy[] = {KC_X, KC_C, COMBO_END};
+const uint16_t PROGMEM combo_paste[] = {KC_C, KC_V, COMBO_END};
+// Don't seem to work all to well and blocks all other KC_J homerow keys. Maybe I need to rebase onto master
+// const uint16_t PROGMEM combo_ctrl_c[] = {RCTL_T(KC_J), KC_C, COMBO_END}; // RCTL_T(KC_J) to match keymaps[] below
+// const uint16_t PROGMEM combo_ctrl_r[] = {RCTL_T(KC_J), KC_R, COMBO_END}; // RCTL_T(KC_J) to match keymaps[] below
 
 // Update COMBO_COUNT in config.h to match
 combo_t key_combos[COMBO_COUNT] = {
-  [ZC_COPY] = COMBO_ACTION(copy_combo),
-  [XV_PASTE] = COMBO_ACTION(paste_combo),
+  [ZX_CUT] = COMBO_ACTION(combo_cut),
+  [XC_COPY] = COMBO_ACTION(combo_copy),
+  [CV_PASTE] = COMBO_ACTION(combo_paste)/*,
+  [JC_CTRL_C] = COMBO_ACTION(combo_ctrl_c),
+  [JC_CTRL_R] = COMBO_ACTION(combo_ctrl_r)*/
 };
 
 void process_combo_event(uint16_t combo_index, bool pressed) {
   switch(combo_index) {
-    case ZC_COPY:
+    case ZX_CUT:
+      if (pressed) {
+        tap_code16(LSFT(KC_DEL));
+      }
+      break;
+    case XC_COPY:
       if (pressed) {
         tap_code16(LCTL(KC_INS));
       }
       break;
-    case XV_PASTE:
+    case CV_PASTE:
       if (pressed) {
         tap_code16(LSFT(KC_INS));
       }
       break;
+    /*case JC_CTRL_C:
+      if (pressed) {
+        tap_code16(LCTL(KC_C));
+      }
+      break;
+    case JC_CTRL_R:
+      if (pressed) {
+        tap_code16(LCTL(KC_R));
+      }
+      break;*/
   }
 }
 
