@@ -78,23 +78,26 @@ enum combo_events {
   XC_COPY,
   CV_PASTE,
   JC_CTRL_C,
-  JC_CTRL_R
+  JC_CTRL_R,
+  JC_CTRL_S,
+// Replace all this with a combos.def and COMB()! See keyboards/gboards/gergoplex/keymaps/colemak-dhm/
 };
 
 const uint16_t PROGMEM combo_cut[] = {KC_Z, KC_X, COMBO_END};
 const uint16_t PROGMEM combo_copy[] = {KC_X, KC_C, COMBO_END};
 const uint16_t PROGMEM combo_paste[] = {KC_C, KC_V, COMBO_END};
-// Don't seem to work all to well and blocks all other KC_J homerow keys. Maybe I need to rebase onto master
-// const uint16_t PROGMEM combo_ctrl_c[] = {RCTL_T(KC_J), KC_C, COMBO_END}; // RCTL_T(KC_J) to match keymaps[] below
-// const uint16_t PROGMEM combo_ctrl_r[] = {RCTL_T(KC_J), KC_R, COMBO_END}; // RCTL_T(KC_J) to match keymaps[] below
+const uint16_t PROGMEM combo_ctrl_c[] = {RCTL_T(KC_J), KC_C, COMBO_END}; // RCTL_T(KC_J) to match keymaps[] below
+const uint16_t PROGMEM combo_ctrl_r[] = {RCTL_T(KC_J), KC_R, COMBO_END}; // RCTL_T(KC_J) to match keymaps[] below
+const uint16_t PROGMEM combo_ctrl_s[] = {RCTL_T(KC_J), LSFT_T(KC_S), COMBO_END}; // RCTL_T(KC_J) and LSFT_T(KC_S) to match keymaps[] below
 
 // Update COMBO_COUNT in config.h to match
 combo_t key_combos[COMBO_COUNT] = {
   [ZX_CUT] = COMBO_ACTION(combo_cut),
   [XC_COPY] = COMBO_ACTION(combo_copy),
-  [CV_PASTE] = COMBO_ACTION(combo_paste)/*,
+  [CV_PASTE] = COMBO_ACTION(combo_paste),
   [JC_CTRL_C] = COMBO_ACTION(combo_ctrl_c),
-  [JC_CTRL_R] = COMBO_ACTION(combo_ctrl_r)*/
+  [JC_CTRL_R] = COMBO_ACTION(combo_ctrl_r),
+  [JC_CTRL_S] = COMBO_ACTION(combo_ctrl_s),
 };
 
 void process_combo_event(uint16_t combo_index, bool pressed) {
@@ -114,7 +117,7 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
         tap_code16(LSFT(KC_INS));
       }
       break;
-    /*case JC_CTRL_C:
+    case JC_CTRL_C:
       if (pressed) {
         tap_code16(LCTL(KC_C));
       }
@@ -123,7 +126,12 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
       if (pressed) {
         tap_code16(LCTL(KC_R));
       }
-      break;*/
+      break;
+    case JC_CTRL_S:
+      if (pressed) {
+        tap_code16(LCTL(KC_S));
+      }
+      break;
   }
 }
 
