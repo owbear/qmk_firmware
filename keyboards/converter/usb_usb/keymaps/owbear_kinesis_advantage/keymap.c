@@ -2,7 +2,6 @@
 #include QMK_KEYBOARD_H
 #include QMK_KEYMAP_CONFIG_H
 
-/// #include "process_tap_hold.h"
 
 enum layers
 {
