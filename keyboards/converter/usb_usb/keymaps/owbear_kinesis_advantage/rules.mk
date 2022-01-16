@@ -27,3 +27,5 @@ LTO_ENABLE = yes # Reduces the compiled firmware size
 # BOOTMAGIC_ENABLE = lite
 # COMMAND_ENABLE = yes
 # BOOTLOADER = atmel-dfu
+
+VPATH                  +=  keyboards/gboards/
