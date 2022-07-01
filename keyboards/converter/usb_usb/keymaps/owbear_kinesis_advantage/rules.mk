@@ -21,6 +21,8 @@ TAP_DANCE_ENABLE = no # Used to allow multiple taps of a key to perform differen
 
 MOUSEKEY_ENABLE = yes
 
+CAPS_WORD_ENABLE = yes
+
 LTO_ENABLE = yes # Reduces the compiled firmware size
 
 # Enabled these to get AG_SWAP working. Not sure it's necessary though
